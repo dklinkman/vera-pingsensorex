@@ -1,0 +1,1033 @@
+{
+    "default_icon": "security_sensor_default.png",
+    "imgIconBody": "",
+    "imgIconDimmable": "",
+    "imgIconTurnable": "",
+    "imgIconMin": "",
+    "imgIconMax": "",
+    "x": "2",
+    "y": "3",
+	"state_icons":[
+		{
+            "img": "motion_sensor_tripped.png",
+            "conditions": [
+                {
+                    "service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                    "variable": "Tripped",
+                    "operator": "==",
+                    "value": 1,
+                }
+            ]
+        },
+        {
+            "img": "motion_sensor_untripped.png",
+            "conditions": [
+                {
+                    "service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                    "variable": "Tripped",
+                    "operator": "==",
+                    "value": 0,
+                }
+            ]
+        }
+	],
+    "inScene": "1",
+    "DisplayStatus": {
+        "Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+        "Variable": "Tripped",
+        "MinValue": "0",
+        "MaxValue": "1"
+    },
+    "doc_url": {
+        "doc_language": 1,
+        "doc_manual": 1,
+        "doc_version": 1,
+        "doc_platform": 0,
+        "doc_page": "sensors"
+    },
+    "ToggleButton": 1,
+    "Tabs": [
+        {
+            "Label": {
+                "lang_tag": "tabname_control",
+                "text": "Control"
+            },
+            "Position": "0",
+            "TabType": "flash",
+            "ControlGroup": [
+                {
+                    "id": "1",
+                    "isSingle": "1",
+                    "scenegroup": "1"
+                },
+                {
+                    "id": "2",
+                    "isSingle": "1",
+                    "scenegroup": "1"
+                },
+                {
+                    "id": "3",
+                    "isSingle": "1",
+                    "scenegroup": "1"
+                },
+                {
+                    "id": "4",
+                    "isSingle": "1",
+                    "scenegroup": "1"
+                },
+				{
+					"id": "11",
+					"isSingle": "1",
+					"scenegroup": "1"
+				},
+				{
+					"id": "12",
+					"isSingle": "1",
+					"scenegroup": "1"
+				}
+            ],
+            "SceneGroup": [
+                {
+                    "id": "1",
+                    "top": "2",
+                    "left": "0",
+                    "x": "2",
+                    "y": "1"
+                }
+            ],
+            "Control": [
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "ping_sensor_control",
+                        "text": "<h1><b>Ping Sensor Ex Control &amp; Status</b></h1>"
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 0,
+                        "Left": 50,
+                        "Width": 250,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "1",
+                    "ControlType": "button",
+                    "top": "0",
+                    "left": "0",
+                    "Label": {
+                        "lang_tag": "cmd_arm",
+                        "text": "Arm"
+                    },
+                    "Display": {
+                        "Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                        "Variable": "Armed",
+                        "Value": "1",
+                        "Top": 70,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                        "Action": "SetArmed",
+                        "Parameters": [
+                            {
+                                "Name": "newArmedValue",
+                                "Value": "1"
+                            }
+                        ]
+                    },
+					"ControlCode": "arm"
+                },
+                {
+                    "ControlGroup": "2",
+                    "ControlType": "button",
+                    "top": "0",
+                    "left": "1",
+                    "Label": {
+                        "lang_tag": "cmd_bypass",
+                        "text": "Bypass"
+                    },
+                    "Display": {
+                        "Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                        "Variable": "Armed",
+                        "Value": "0",
+                        "Top": 70,
+                        "Left": 145,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                        "Action": "SetArmed",
+                        "Parameters": [
+                            {
+                                "Name": "newArmedValue",
+                                "Value": "0"
+                            }
+                        ]
+                    },
+					"ControlCode": "bypass"
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "bypass_instructions",
+                        "text": "Bypass will disable any current triggers set on the sensor"
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 75,
+                        "Left": 235,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "3",
+                    "ControlType": "button",
+                    "top": "1",
+                    "left": "0",
+                    "Label": {
+                        "lang_tag": "cmd_off",
+                        "text": "Off"
+                    },
+                    "Display": {
+                        "Service": "urn:upnp-org:serviceId:SwitchPower1",
+                        "Variable": "Status",
+                        "Value": "0",
+                        "Top": 100,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:upnp-org:serviceId:SwitchPower1",
+                        "Action": "SetTarget",
+                        "Parameters": [
+                            {
+                                "Name": "newTargetValue",
+                                "Value": "0"
+                            }
+                        ]
+                    },
+					"ControlCode": "off"
+                },
+				{
+                    "ControlGroup": "4",
+                    "ControlType": "button",
+                    "top": "1",
+                    "left": "1",
+                    "Label": {
+                        "lang_tag": "cmd_on",
+                        "text": "On"
+                    },
+                    "Display": {
+                        "Service": "urn:upnp-org:serviceId:SwitchPower1",
+                        "Variable": "Status",
+                        "Value": "1",
+                        "Top": 100,
+                        "Left": 145,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:upnp-org:serviceId:SwitchPower1",
+                        "Action": "SetTarget",
+                        "Parameters": [
+                            {
+                                "Name": "newTargetValue",
+                                "Value": "1"
+                            }
+                        ]
+                    },
+					"ControlCode": "on"
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "on_off_switch",
+                        "text": "Turn the sensor off to stop pinging the host or address"
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 105,
+                        "Left": 235,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "current_address",
+                        "text": "Current Host Name or Address: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 135,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "5",
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 135,
+                        "Left": 232,
+                        "Width": 250,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "Address"
+                    }
+                }, 
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "new_address",
+                        "text": "New Address: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 163,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType":"input",
+                    "ID": "NewAddressValue",
+                    "Display":{
+                        "Top": 160,
+                        "Left": 137,
+                        "Width": 125,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "button",
+                    "Label": {
+                        "lang_tag": "set_address",
+                        "text": "Set"
+                    },
+                    "Display": {
+                        "Top": 160,
+                        "Left": 280,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action":  "SetAddress",
+                        "Parameters": [
+                            {
+                                "Name": "newAddressValue",
+                                "ID": "NewAddressValue"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ControlType": "button",
+                    "Label": {
+                        "lang_tag": "ping_now",
+                        "text": "Ping Now"
+                    },
+                    "Display": {
+                        "Top": 160,
+                        "Left": 370,
+                        "Width": 90,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action":  "PingNow",
+                        "Parameters": [
+                            {
+                                "Name": "newAddressValue",
+                                "ID": "NewAddressValue"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ControlGroup": "6",
+                    "ControlType": "button",
+                    "top": "1",
+                    "left": "0",
+                    "Label": {
+                        "lang_tag": "invert_normal",
+                        "text": "Normal"
+                    },
+                    "Display": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Variable": "Invert",
+                        "Value": "0",
+                        "Top": 195,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action": "SetInvert",
+                        "Parameters": [
+                            {
+                                "Name": "newInvertValue",
+                                "Value": "0"
+                            }
+                        ]
+                    },
+					"ControlCode": "normal"
+                },
+				{
+                    "ControlGroup": "7",
+                    "ControlType": "button",
+                    "top": "1",
+                    "left": "1",
+                    "Label": {
+                        "lang_tag": "invert_status",
+                        "text": "Invert"
+                    },
+                    "Display": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Variable": "Invert",
+                        "Value": "1",
+                        "Top": 195,
+                        "Left": 145,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action": "SetInvert",
+                        "Parameters": [
+                            {
+                                "Name": "newInvertValue",
+                                "Value": "1"
+                            }
+                        ]
+                    },
+					"ControlCode": "on"
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "invert_switch",
+                        "text": "Invert the tripped and reset states of the sensor"
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 202,
+                        "Left": 235,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "armed_status",
+                        "text": "Armed Status: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 237,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "8",
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 237,
+                        "Left": 152,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+						"Variable": "Armed"
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "onoff_status",
+                        "text": "On/Off Status: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 262,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "9",
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 262,
+                        "Left": 152,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:upnp-org:serviceId:SwitchPower1",
+						"Variable": "Status"
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "tripped_status",
+                        "text": "Tripped Status: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 287,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "10",
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 287,
+                        "Left": 152,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+						"Variable": "Tripped"
+                    }
+                },
+                {
+                    "ControlGroup": "11",
+                    "ControlType": "label",
+                    "top": -1.5,
+                    "left": -1,
+                    "Label": {
+                        "lang_tag": "armed_status",
+                        "text": "Last Tripped Date/Time: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 237,
+                        "Left": 205,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "12",
+                    "ControlType": "variable",
+					"top": -1.5,
+                    "left": 0,
+                    "x": 4,
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 237,
+                        "Left": 345,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "LastTrippedDateTime"
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "failure_count",
+                        "text": "Failure Count: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 262,
+                        "Left": 205,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "13",
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 262,
+                        "Left": 310,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "FailureCount"
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "invert_state",
+                        "text": "Invert State Flag: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 312,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "tripped_duration",
+                        "text": "Tripped Duration: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 287,
+                        "Left": 205,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 287,
+                        "Left": 310,
+                        "Width": 75,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "TrippedDuration"
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+                        "lang_tag": "reset_duration",
+                        "text": "Reset Duration: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 312,
+                        "Left": 205,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 312,
+                        "Left": 310,
+                        "Width": 75,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "ResetDuration"
+                    }
+                },
+                {
+                    "ControlGroup": "14",
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 312,
+                        "Left": 152,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "Invert"
+                    }
+                },
+				{
+                    "ControlGroup": "15",
+                    "ControlType": "button",
+                    "Label": {
+                        "lang_tag": "toggle_debug",
+                        "text": "Toggle Debug"
+                    },
+                    "Display": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Variable": "Debug",
+                        "Value": "1",
+                        "Top": 307,
+                        "Left": 470,
+                        "Width": 135,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action": "ToggleDebug",
+                        "Parameters": [
+                            {
+                                "Name": "newDebugValue",
+                                "Value": "1"
+                            }
+                        ]
+                    },
+					"ControlCode": "toggle_debug"
+                }
+            ]
+        },
+		{
+            "Label": {
+                "lang_tag": "tabname_settings",
+                "text": "Settings"
+            },
+            "Position": "1",
+            "TabType": "flash",
+            "Control": [
+                {
+                    "ControlType": "label",
+                    "Label": {
+						"lang_tag": "ping_sensor_additional_settings",
+                        "text": "<h1><b>Ping Sensor Ex Additional Settings</b></h1>"
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 0,
+                        "Left": 50,
+                        "Width": 250,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+						"lang_tag": "allowed_failures",
+                        "text": "Allowed Failures: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 75,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+						"lang_tag": "tripped_hole_time",
+                        "text": "Tripped Hold Time: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 105,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "label",
+                    "Label": {
+						"lang_tag": "reset_hold_time",
+                        "text": "Reset Hold Time: "
+                    },
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 135,
+                        "Left": 50,
+                        "Width": 75,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 75,
+                        "Left": 167,
+                        "Width": 250,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "AllowedFailures"
+                    }
+                }, 
+                {
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 105,
+                        "Left": 167,
+                        "Width": 250,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "TrippedHoldTime"
+                    }
+                }, 
+                {
+                    "ControlType": "variable",
+                    "text_align": "left",
+                    "Display": {
+                        "Top": 135,
+                        "Left": 167,
+                        "Width": 50,
+                        "Height": 20,
+						"Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+						"Variable": "ResetHoldTime"
+                    }
+                },
+                {
+                    "ControlType":"input",
+                    "ID": "NewAllowedFailuresValue",
+                    "Display":{
+                        "Top": 70,
+                        "Left": 230,
+                        "Width": 40,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType":"input",
+                    "ID": "NewTrippedHoldTimeValue",
+                    "Display":{
+                        "Top": 100,
+                        "Left": 230,
+                        "Width": 40,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType":"input",
+                    "ID": "NewResetHoldTimeValue",
+                    "Display":{
+                        "Top": 130,
+                        "Left": 230,
+                        "Width": 40,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlType": "button",
+                    "Label": {
+						"lang_tag": "set_allowed_failures",
+                        "text": "Set"
+                    },
+                    "Display": {
+                        "Top": 70,
+                        "Left": 285,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action":  "SetAllowedFailures",
+                        "Parameters": [
+                            {
+                                "Name": "newAllowedFailuresValue",
+                                "ID": "NewAllowedFailuresValue"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ControlType": "button",
+                    "Label": {
+						"lang_tag": "set_tripped_hold_time",
+                        "text": "Set"
+                    },
+                    "Display": {
+                        "Top": 100,
+                        "Left": 285,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action":  "SetTrippedHoldTime",
+                        "Parameters": [
+                            {
+                                "Name": "newTrippedHoldTimeValue",
+                                "ID": "NewTrippedHoldTimeValue"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ControlType": "button",
+                    "Label": {
+						"lang_tag": "set_reset_hold_time",
+                        "text": "Set"
+                    },
+                    "Display": {
+                        "Top": 130,
+                        "Left": 285,
+                        "Width": 75,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:dklinkman-com:serviceId:PingSensorEx1",
+                        "Action":  "SetResetHoldTime",
+                        "Parameters": [
+                            {
+                                "Name": "newResetHoldTimeValue",
+                                "ID": "NewResetHoldTimeValue"
+                            }
+                        ]
+                    }
+                }
+			]
+		},
+        {
+            "Label": {
+                "lang_tag": "advanced",
+                "text": "Advanced"
+            },
+            "Position": "2",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "advanced_device"
+        },
+        {
+            "Label": {
+                "lang_tag": "device_options",
+                "text": "Device Options"
+            },
+            "Position": "3",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "device_zwave_options"
+        },
+        {
+            "Label": {
+                "lang_tag": "logs",
+                "text": "Logs"
+            },
+            "Position": "4",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "device_logs"
+        },
+        {
+            "Label": {
+                "lang_tag": "notifications",
+                "text": "Notifications"
+            },
+            "Position": "5",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "device_notifications"
+        }
+    ],
+    "sceneList": {
+        "group_1": {
+            "cmd_1": {
+                "label": "Arm",
+                "serviceId": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                "action": "SetArmed",
+                "arguments": {
+                    "newArmedValue": "1"
+                },
+                "display": {
+                    "service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                    "variable": "Armed",
+                    "value": "1"
+                }
+            },
+            "cmd_2": {
+                "label": "Bypass",
+                "serviceId": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                "action": "SetArmed",
+                "arguments": {
+                    "newArmedValue": "0"
+                },
+                "display": {
+                    "service": "urn:micasaverde-com:serviceId:SecuritySensor1",
+                    "variable": "Armed",
+                    "value": "0"
+                }
+            }
+        }
+    },
+    "eventList2": [
+        {
+            "id": 1,
+            "label": {
+                "lang_tag": "door_window_motion_sensor_is_tripped",
+                "text": "An armed OR bypassed ping sensor is tripped"
+            },
+            "serviceId": "urn:micasaverde-com:serviceId:SecuritySensor1",
+            "argumentList": [
+                {
+                    "id": 1,
+                    "dataType": "boolean",
+                    "defaultValue": "",
+                    "allowedValueList": [
+                        {
+                            "Yes": "1",
+                            "HumanFriendlyText": {
+                                "lang_tag": "hft_sensor_tripped",
+                                "text": "_DEVICE_NAME_ is tripped"
+                            }
+                        },
+                        {
+                            "No": "0",
+                            "HumanFriendlyText": {
+                                "lang_tag": "hft_sensor_not_tripped",
+                                "text": "_DEVICE_NAME_ is not tripped"
+                            }
+                        }
+                    ],
+                    "name": "Tripped",
+                    "comparisson": "=",
+                    "prefix": {},
+                    "suffix": {}
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "label": {
+                "lang_tag": "an_armed_sensor_is_tripped",
+                "text": "An armed ping sensor is tripped"
+            },
+            "serviceId": "urn:micasaverde-com:serviceId:SecuritySensor1",
+            "serviceStateTable": {
+                "Armed": {
+                    "value": "1",
+                    "comparisson": "="
+                }
+            },
+            "argumentList": [
+                {
+                    "id": 1,
+                    "dataType": "boolean",
+                    "allowedValueList": [
+                        {
+                            "Yes": "1",
+                            "HumanFriendlyText": {
+                                "lang_tag": "hft_armed_sensor_tripped",
+                                "text": "_DEVICE_NAME_ armed is tripped"
+                            }
+                        },
+                        {
+                            "No": "0",
+                            "HumanFriendlyText": {
+                                "lang_tag": "hft_armed_sensor_not_tripped",
+                                "text": "_DEVICE_NAME_ armed is not tripped"
+                            }
+                        }
+                    ],
+                    "name": "Tripped",
+                    "comparisson": "=",
+                    "prefix": {},
+                    "suffix": {}
+                }
+            ]
+        }
+    ],
+    "DeviceType": "urn:schemas-dklinkman-com:device:PingSensorEx:1",
+    "device_type": "urn:schemas-dklinkman-com:device:PingSensorEx:1"
+}

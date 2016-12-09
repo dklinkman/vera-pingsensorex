@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<implementation>
+	<specVersion>
+		<major>1</major>
+		<minor>2</minor>
+	</specVersion>
+	<settings>
+		<protocol>cr</protocol>
+	</settings>
+    <files>L_PingSensorEx.lua</files>
+	<startup>initializeDevice</startup>
+	<actionList>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetAddress</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "Address", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetAddress</name>
+			<run>
+				luup.variable_set(PING_SENSOR_SID, "Address", lul_settings.newAddressValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetInterval</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "Interval", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetInterval</name>
+			<run>
+				luup.variable_set(PING_SENSOR_SID, "Interval", lul_settings.newIntervalValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetInvert</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "Invert", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetInvert</name>
+			<run>
+				debug("action.SetInvert() - called with lul_device = " .. lul_device .. ", lul_settings.newInvertValue = " .. lul_settings.newInvertValue)
+				luup.variable_set(PING_SENSOR_SID, "Invert", lul_settings.newInvertValue, lul_device)
+				local trippedhold = luup.variable_get(SECURITY_SENSOR_SID, "TrippedHoldTime", luu_device)
+				local resethold = luup.variable_get(SECURITY_SENSOR_SID, "ResetHoldTime", luu_device)
+				--local tripped = luup.variable_get(SECURITY_SENSOR_SID, "Tripped", lul_device)
+				--storeResults(lul_device, tripped, lul_settings.newInvertValue, trippedhold, resethold)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetAllowedFailures</name>
+			<run>
+				luup.variable_set(PING_SENSOR_SID, "AllowedFailures", lul_settings.newAllowedFailuresValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetAllowedFailures</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "AllowedFailures", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetFailureCount</name>
+			<run>
+				luup.variable_set(PING_SENSOR_SID, "FailureCount", lul_settings.newFailureCountValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetFailureCount</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "FailureCount", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetTrippedHoldTime</name>
+			<run>
+				luup.variable_set(PING_SENSOR_SID, "TrippedHoldTime", lul_settings.newTrippedHoldTimeValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetTrippedHoldTime</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "TrippedHoldTime", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetResetHoldTime</name>
+			<run>
+				luup.variable_set(PING_SENSOR_SID, "ResetHoldTime", lul_settings.newResetHoldTimeValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetResetHoldTime</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "ResetHoldTime", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>SetDebug</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "Debug", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>GetDebug</name>
+			<run>
+				luup.variable_get(PING_SENSOR_SID, "Debug", lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:upnp-org:serviceId:SwitchPower1</serviceId>
+			<name>SetTarget</name>
+			<run>
+				luup.variable_set(SWITCH_POWER_SID, "Target", lul_settings.newTargetValue, lul_device)
+				luup.variable_set(SWITCH_POWER_SID, "Status", lul_settings.newTargetValue, lul_device)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:micasaverde-com:serviceId:SecuritySensor1</serviceId>
+			<name>SetArmed</name>
+			<run>
+				luup.variable_set(SECURITY_SENSOR_SID, "Armed", lul_settings.newArmedValue, lul_device)
+				return 4, 0
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>PingNow</name>
+			<run>
+				local address, interval, invert, allowedFailures, trippedHoldTime, resetHoldTime, enable = readSettings(lul_device)
+				local new_address = lul_settings.newAddressValue
+				if (new_address == nil or new_address == "") then
+					new_address = address
+				end
+				log("PingNow() - initiating one time ping using address: " .. new_address)
+				local trippedhold = luup.variable_get(SECURITY_SENSOR_SID, "TrippedHoldTime", luu_device)
+				local resethold = luup.variable_get(SECURITY_SENSOR_SID, "ResetHoldTime", luu_device)
+				storeResults(lul_device, pingAddress(new_address), invert, trippedhold, resethold)
+			</run>
+		</action>
+		<action>
+			<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+			<name>ToggleDebug</name>
+			<run>
+				local toggle_debug = luup.variable_get(PING_SENSOR_SID, "Debug", lul_device)
+				log("ToggleDebug() - debug current global state: " .. DEBUG_MODE .. ", retrieved persistent state: " .. toggle_debug)
+				if (toggle_debug == 0 or toggle_debug == "0" or toggle_debug == nil) then
+					toggle_debug = 1
+					DEBUG_MODE = 1
+				else
+					toggle_debug = 0
+					DEBUG_MODE = 0
+				end
+				luup.variable_set(PING_SENSOR_SID, "Debug", toggle_debug, lul_device)
+				log("ToggleDebug() - toggled debug to new state: " .. toggle_debug)
+			</run>
+		</action>
+	</actionList>
+</implementation>

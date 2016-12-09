@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+	<specVersion>
+		<major>1</major>
+		<minor>2</minor>
+	</specVersion>
+	<device>
+		<!-- By default PingSensorEx is its own device type mainly so it can have its own
+		     user interface. The original PingSensor was a subclass of the standard
+			 MotionSensor device type and as such, would be discoverable by other control
+			 points capable of discovering standard UPnP devices. By default PingSensorEx
+			 will not be discoverable by those control points. If PingSensorEx needs to
+			 be discoverable by other control points, simply comment out the next two XML
+			 tags and uncomment the two that follow them. PingSensorEx will lose its user
+			 interface but it will be discoverable as a UPnP device. You will still be able
+			 to configure PingSensorEx via the advanced tab of the device UI.
+		  -->
+		<deviceType>urn:schemas-dklinkman-com:device:PingSensorEx:1</deviceType>
+		<staticJson>D_PingSensorEx.json</staticJson>
+		<!--<deviceType>urn:schemas-micasaverde-com:device:MotionSensor:1</deviceType>-->
+		<!--<staticJson>D_MotionSensor1.json</staticJson>-->
+		<friendlyName>Ping Sensor Ex</friendlyName>
+		<protocol>cr</protocol>
+		<handleChildren>0</handleChildren>
+		<serviceList>
+			<service>
+				<serviceType>urn:schemas-dklinkman-com:service:PingSensorEx:1</serviceType>
+				<serviceId>urn:dklinkman-com:serviceId:PingSensorEx1</serviceId>
+				<SCPDURL>S_PingSensorEx.xml</SCPDURL>
+			</service>
+			<service>
+				<serviceType>urn:schemas-micasaverde-com:service:SecuritySensor:1</serviceType>
+				<serviceId>urn:micasaverde-com:serviceId:SecuritySensor1</serviceId>
+				<SCPDURL>S_SecuritySensor1.xml</SCPDURL>
+			</service>
+			<service>
+				<serviceType>urn:schemas-upnp-org:service:SwitchPower:1</serviceType>
+				<serviceId>urn:upnp-org:serviceId:SwitchPower1</serviceId>
+				<SCPDURL>S_SwitchPower1.xml</SCPDURL>
+			</service>
+		</serviceList>
+		<implementationList>
+			<implementationFile>I_PingSensorEx.xml</implementationFile>
+		</implementationList>
+	</device>
+</root>
